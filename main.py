@@ -25,7 +25,5 @@ def callFirebase():
   result = firebase.get('/Room502', None)
   return result
 
-callFirebase()
-
 if __name__ == '__main__':
   app.run(debug=True, threaded=True)

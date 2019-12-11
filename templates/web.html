@@ -1,0 +1,28 @@
+<style>
+  .green {
+    color: green;
+  }
+</style>
+
+
+<head>
+  <h1 class="green">{{ randInt }} องศา</h1>
+  <div>
+    <span class="progress-bar-label"></span>
+  </div>
+</head>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+  var source = new EventSource("/progress");
+  source.onmessage = function (event) {
+    $('.progress-bar-label').text(event.data + '%');
+    // var old = 0
+    // if (old == event.data) {
+    //   source.close()
+    // } else {
+    //   var old = event.data
+    //   source.OPEN()
+    // }
+  }
+</script>

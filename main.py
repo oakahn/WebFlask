@@ -21,6 +21,16 @@ def progress():
 
 	return Response(generate(), mimetype='text/event-stream')
 
+@app.route('/chart-data')
+def chart_data():
+    def generate_random_data():
+        while True:
+          yield "data:" + str(callFirebase()) +"\n\n"
+          time.sleep(5)
+
+    return Response(generate_random_data(), mimetype='text/event-stream')
+
+
 def callFirebase():
   result = firebase.get('/Room502', None)
   return result
